@@ -1,0 +1,24 @@
+PODS:
+  - Alamofire (4.4.0)
+  - DualSlideMenu (1.7.3)
+
+DEPENDENCIES:
+  - Alamofire (from `https://github.com/Alamofire/Alamofire.git`)
+  - DualSlideMenu (~> 1.7)
+
+EXTERNAL SOURCES:
+  Alamofire:
+    :git: https://github.com/Alamofire/Alamofire.git
+
+CHECKOUT OPTIONS:
+  Alamofire:
+    :commit: b03b43cc381ec02eb9855085427186ef89055eef
+    :git: https://github.com/Alamofire/Alamofire.git
+
+SPEC CHECKSUMS:
+  Alamofire: 4c2bf7fa03c4a626163606de0a417568c270575e
+  DualSlideMenu: 8e1c5255a95c3dcfc1c6dc470105278765f52093
+
+PODFILE CHECKSUM: c8b64bddc104b167254774d58c6def15b75eff7c
+
+COCOAPODS: 1.2.0

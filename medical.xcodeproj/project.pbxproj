@@ -8,22 +8,34 @@
 
 /* Begin PBXBuildFile section */
 		096D5D861E667B8100398504 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096D5D851E667B8100398504 /* AppDelegate.swift */; };
-		096D5D881E667B8100398504 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096D5D871E667B8100398504 /* ViewController.swift */; };
+		096D5D881E667B8100398504 /* SessionsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096D5D871E667B8100398504 /* SessionsController.swift */; };
 		096D5D8B1E667B8100398504 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 096D5D891E667B8100398504 /* Main.storyboard */; };
 		096D5D8E1E667B8100398504 /* medical.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 096D5D8C1E667B8100398504 /* medical.xcdatamodeld */; };
 		096D5D901E667B8100398504 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 096D5D8F1E667B8100398504 /* Assets.xcassets */; };
 		096D5D931E667B8100398504 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 096D5D911E667B8100398504 /* LaunchScreen.storyboard */; };
+		0985FB5D1E67CF6100E45BF9 /* SessionRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0985FB5C1E67CF6100E45BF9 /* SessionRoute.swift */; };
+		0985FB5F1E67E7E200E45BF9 /* AlertMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0985FB5E1E67E7E200E45BF9 /* AlertMessage.swift */; };
+		0985FB611E67EC7E00E45BF9 /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0985FB601E67EC7E00E45BF9 /* AppConfig.swift */; };
+		0985FB641E6801FC00E45BF9 /* SessionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0985FB631E6801FC00E45BF9 /* SessionModel.swift */; };
+		229CFD99CC3868D52EFFEB98 /* Pods_medical.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 618BFCA1ADC7D7649E749E95 /* Pods_medical.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		096D5D821E667B8100398504 /* medical.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = medical.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		096D5D851E667B8100398504 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		096D5D871E667B8100398504 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		096D5D871E667B8100398504 /* SessionsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionsController.swift; sourceTree = "<group>"; };
 		096D5D8A1E667B8100398504 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		096D5D8D1E667B8100398504 /* medical.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = medical.xcdatamodel; sourceTree = "<group>"; };
 		096D5D8F1E667B8100398504 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		096D5D921E667B8100398504 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		096D5D941E667B8100398504 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0985FB5C1E67CF6100E45BF9 /* SessionRoute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionRoute.swift; sourceTree = "<group>"; };
+		0985FB5E1E67E7E200E45BF9 /* AlertMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertMessage.swift; sourceTree = "<group>"; };
+		0985FB601E67EC7E00E45BF9 /* AppConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
+		0985FB631E6801FC00E45BF9 /* SessionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionModel.swift; sourceTree = "<group>"; };
+		618BFCA1ADC7D7649E749E95 /* Pods_medical.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_medical.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D9706B9928A964B07B4E1BC1 /* Pods-medical.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-medical.debug.xcconfig"; path = "Pods/Target Support Files/Pods-medical/Pods-medical.debug.xcconfig"; sourceTree = "<group>"; };
+		F9822DDC13E5C3F0F5C36138 /* Pods-medical.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-medical.release.xcconfig"; path = "Pods/Target Support Files/Pods-medical/Pods-medical.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +43,32 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				229CFD99CC3868D52EFFEB98 /* Pods_medical.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		09574BC11E6950920092A0CE /* support_files */ = {
+			isa = PBXGroup;
+			children = (
+				096D5D891E667B8100398504 /* Main.storyboard */,
+				096D5D8F1E667B8100398504 /* Assets.xcassets */,
+				096D5D911E667B8100398504 /* LaunchScreen.storyboard */,
+				096D5D941E667B8100398504 /* Info.plist */,
+				096D5D8C1E667B8100398504 /* medical.xcdatamodeld */,
+			);
+			name = support_files;
+			sourceTree = "<group>";
+		};
 		096D5D791E667B8100398504 = {
 			isa = PBXGroup;
 			children = (
 				096D5D841E667B8100398504 /* medical */,
 				096D5D831E667B8100398504 /* Products */,
+				4DA776204A08F3C3AB13F1BD /* Pods */,
+				F8E87A931D798E07BF6B1862 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,15 +83,64 @@
 		096D5D841E667B8100398504 /* medical */ = {
 			isa = PBXGroup;
 			children = (
+				09574BC11E6950920092A0CE /* support_files */,
+				0985FB621E6801E000E45BF9 /* models */,
+				0985FB5B1E67CF4B00E45BF9 /* routes */,
+				098FEBF31E67C85F0085D15D /* helpers */,
+				096D5D9A1E66956500398504 /* controllers */,
 				096D5D851E667B8100398504 /* AppDelegate.swift */,
-				096D5D871E667B8100398504 /* ViewController.swift */,
-				096D5D891E667B8100398504 /* Main.storyboard */,
-				096D5D8F1E667B8100398504 /* Assets.xcassets */,
-				096D5D911E667B8100398504 /* LaunchScreen.storyboard */,
-				096D5D941E667B8100398504 /* Info.plist */,
-				096D5D8C1E667B8100398504 /* medical.xcdatamodeld */,
+				0985FB601E67EC7E00E45BF9 /* AppConfig.swift */,
 			);
 			path = medical;
+			sourceTree = "<group>";
+		};
+		096D5D9A1E66956500398504 /* controllers */ = {
+			isa = PBXGroup;
+			children = (
+				096D5D871E667B8100398504 /* SessionsController.swift */,
+			);
+			name = controllers;
+			sourceTree = "<group>";
+		};
+		0985FB5B1E67CF4B00E45BF9 /* routes */ = {
+			isa = PBXGroup;
+			children = (
+				0985FB5C1E67CF6100E45BF9 /* SessionRoute.swift */,
+			);
+			name = routes;
+			sourceTree = "<group>";
+		};
+		0985FB621E6801E000E45BF9 /* models */ = {
+			isa = PBXGroup;
+			children = (
+				0985FB631E6801FC00E45BF9 /* SessionModel.swift */,
+			);
+			name = models;
+			sourceTree = "<group>";
+		};
+		098FEBF31E67C85F0085D15D /* helpers */ = {
+			isa = PBXGroup;
+			children = (
+				0985FB5E1E67E7E200E45BF9 /* AlertMessage.swift */,
+			);
+			name = helpers;
+			sourceTree = "<group>";
+		};
+		4DA776204A08F3C3AB13F1BD /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D9706B9928A964B07B4E1BC1 /* Pods-medical.debug.xcconfig */,
+				F9822DDC13E5C3F0F5C36138 /* Pods-medical.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		F8E87A931D798E07BF6B1862 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				618BFCA1ADC7D7649E749E95 /* Pods_medical.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +150,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 096D5D971E667B8100398504 /* Build configuration list for PBXNativeTarget "medical" */;
 			buildPhases = (
+				7F535DE3683CFCB8D1561A72 /* [CP] Check Pods Manifest.lock */,
 				096D5D7E1E667B8100398504 /* Sources */,
 				096D5D7F1E667B8100398504 /* Frameworks */,
 				096D5D801E667B8100398504 /* Resources */,
+				B9E6B2F9608C0800898595F5 /* [CP] Embed Pods Frameworks */,
+				331FA99C7EE7A58CD9970CB1 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -134,14 +213,66 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		331FA99C7EE7A58CD9970CB1 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-medical/Pods-medical-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7F535DE3683CFCB8D1561A72 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		B9E6B2F9608C0800898595F5 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-medical/Pods-medical-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		096D5D7E1E667B8100398504 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0985FB5D1E67CF6100E45BF9 /* SessionRoute.swift in Sources */,
+				0985FB5F1E67E7E200E45BF9 /* AlertMessage.swift in Sources */,
 				096D5D8E1E667B8100398504 /* medical.xcdatamodeld in Sources */,
-				096D5D881E667B8100398504 /* ViewController.swift in Sources */,
+				096D5D881E667B8100398504 /* SessionsController.swift in Sources */,
 				096D5D861E667B8100398504 /* AppDelegate.swift in Sources */,
+				0985FB641E6801FC00E45BF9 /* SessionModel.swift in Sources */,
+				0985FB611E67EC7E00E45BF9 /* AppConfig.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -260,6 +391,7 @@
 		};
 		096D5D981E667B8100398504 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D9706B9928A964B07B4E1BC1 /* Pods-medical.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = medical/Info.plist;
@@ -272,6 +404,7 @@
 		};
 		096D5D991E667B8100398504 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F9822DDC13E5C3F0F5C36138 /* Pods-medical.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = medical/Info.plist;
@@ -301,6 +434,7 @@
 				096D5D991E667B8100398504 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
