@@ -11,6 +11,9 @@ import Security
 
 // Constant identifier
 let authToken: NSString = "AUTH_TOKEN"
+let currentUser: String = "CURRENT_USER"
+
+let userDefault = UserDefaults.standard
 
 // Arguments for the keychain queries
 let kSecClassValue = NSString(format: kSecClass)
@@ -21,7 +24,6 @@ let kSecAttrServiceValue = NSString(format: kSecAttrService)
 let kSecMatchLimitValue = NSString(format: kSecMatchLimit)
 let kSecReturnDataValue = NSString(format: kSecReturnData)
 let kSecMatchLimitOneValue = NSString(format: kSecMatchLimitOne)
-
 
 public class SessionModel: NSObject {
     
@@ -41,6 +43,14 @@ public class SessionModel: NSObject {
         } else {
             return value!
         }
+    }
+    
+    public class func setCurrentUser(_ userObject: [String: Any]) {
+        userDefault.set(userObject, forKey: currentUser)
+    }
+    
+    public class func getCurrentUser() -> [String: Any] {
+        return userDefault.object(forKey: currentUser) as! [String: Any]
     }
     
     /**
@@ -81,5 +91,27 @@ public class SessionModel: NSObject {
         }
         
         return contentsOfKeychain
+    }
+}
+
+enum CurrentUserFields: String {
+    case ID = "id"
+    case Name = "name"
+    case Role = "role"
+    case Token = "token"
+}
+
+class CurrentUser {
+    
+    var id: Int!
+    var name: String?
+    var role: String?
+    var token: String?
+    
+    required init(_ json: [String: Any] ){
+        self.id = json[CurrentUserFields.ID.rawValue] as? Int
+        self.name = json[CurrentUserFields.Name.rawValue] as? String
+        self.role = json[CurrentUserFields.Role.rawValue] as? String
+        self.token = json[CurrentUserFields.Token.rawValue] as? String
     }
 }

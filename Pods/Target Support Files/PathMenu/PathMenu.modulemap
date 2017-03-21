@@ -1,0 +1,6 @@
+framework module PathMenu {
+  umbrella header "PathMenu-umbrella.h"
+
+  export *
+  module * { export * }
+}

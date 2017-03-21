@@ -18,18 +18,21 @@ class SessionsController: UIViewController {
     @IBOutlet var submitButton: UIButton!
     
     let alertMessage = AlertMessage()
+    let authToken    = SessionModel.getAuthToken()
 
     override func viewDidLoad() {
-        
-        print("My auth token \(SessionModel.getAuthToken())")
+        super.viewDidLoad()
         
         // Setup View
         setupView()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        let token = SessionModel.getAuthToken()
         
-        // Code
-        
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        if token != "" {
+            self.performSegue(withIdentifier: "moveSigned", sender: nil)
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -55,8 +58,6 @@ class SessionsController: UIViewController {
         let fontButton = UIFont(name: "Avenir-Light", size: 18.0)
         var emailFrameRect = emailField.frame
         var passwordFrameRect = passwordField.frame
-        let emailPlaceholder = NSAttributedString(string: "Email", attributes: [NSForegroundColorAttributeName: UIColor.white])
-        let passwordPlaceholder = NSAttributedString(string: "Password", attributes: [NSForegroundColorAttributeName: UIColor.white])
         
         backgroundImage.addSubview(blurEffectView)
         titleApp.font = fontTitleApp
@@ -64,11 +65,8 @@ class SessionsController: UIViewController {
         passwordFrameRect.size.height = 45
         
         submitButton.titleLabel?.font = fontButton
-        emailField.attributedPlaceholder = emailPlaceholder
         emailField.frame = emailFrameRect
-        passwordField.attributedPlaceholder = passwordPlaceholder
         passwordField.frame = passwordFrameRect
-        
     }
     
     func signIn() {
@@ -80,17 +78,27 @@ class SessionsController: UIViewController {
                 if let responseJson = response.result.value as? [String: Any] {
                     let status = responseJson["status"] as! Bool
                     let message = responseJson["message"] as! String
-                    let user = responseJson["data"] as! [String: Any]
-                    let authToken = user["token"] as! String
                     
                     if status {
+                        let user = responseJson["data"] as! [String: Any]
+                        let authToken = user["token"] as! String
+                        
                         SessionModel.setAuthToken(authToken as NSString)
+                        SessionModel.setCurrentUser(user)
+                        
+                        self.resetFields()
+                        self.performSegue(withIdentifier: "moveSigned", sender: nil)
                     } else {
                         self.alertMessage.show("Opps!", alertDescription: message)
                     }
                 }
             }
         }
+    }
+    
+    func resetFields() {
+        emailField.text = ""
+        passwordField.text = ""
     }
 }
 

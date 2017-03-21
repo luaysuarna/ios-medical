@@ -7,6 +7,6 @@ target 'medical' do
 
   # Pods for medical
   pod 'Alamofire', :git => 'https://github.com/Alamofire/Alamofire.git'
-  # Pods for slide menu
-  pod 'DualSlideMenu', '~> 1.7'
+  pod 'DateTimePicker'
+  pod 'PathMenu'
 end

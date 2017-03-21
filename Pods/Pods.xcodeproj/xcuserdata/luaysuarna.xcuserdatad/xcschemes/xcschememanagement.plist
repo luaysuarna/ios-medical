@@ -9,12 +9,12 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>DualSlideMenu-DualSlideMenu.xcscheme</key>
+		<key>DateTimePicker.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>DualSlideMenu.xcscheme</key>
+		<key>PathMenu.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -27,22 +27,22 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>16F69178DF4760386DD4A42D4E9AD102</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>30BF027CF51467BEE9B957E06B9EB0AE</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>68F507154BD8FDD5CB4516E7F56F952B</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>88E9EC28B8B46C3631E6B242B50F4442</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9FA73695D1E57996C128686ADB24DCC2</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D45B8996D7F1474E0C0858CDF17168BD</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D470AAD7D8C1A1DD124CB8D2B5FE68BC</key>
 		<dict>
 			<key>primary</key>
 			<true/>

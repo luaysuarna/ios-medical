@@ -1,10 +1,12 @@
 PODS:
   - Alamofire (4.4.0)
-  - DualSlideMenu (1.7.3)
+  - DateTimePicker (1.0.3)
+  - PathMenu (2.0.0)
 
 DEPENDENCIES:
   - Alamofire (from `https://github.com/Alamofire/Alamofire.git`)
-  - DualSlideMenu (~> 1.7)
+  - DateTimePicker
+  - PathMenu
 
 EXTERNAL SOURCES:
   Alamofire:
@@ -17,8 +19,9 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   Alamofire: 4c2bf7fa03c4a626163606de0a417568c270575e
-  DualSlideMenu: 8e1c5255a95c3dcfc1c6dc470105278765f52093
+  DateTimePicker: 23ca73cee22ff485e9e2fbfa4e4082845ce65e95
+  PathMenu: 18bb2e23062471e485fe46c7a06d7c42242680f9
 
-PODFILE CHECKSUM: c8b64bddc104b167254774d58c6def15b75eff7c
+PODFILE CHECKSUM: cb575cf90807b6be7b9f7efab408d4a5d1e6f826
 
 COCOAPODS: 1.2.0

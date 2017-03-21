@@ -10,6 +10,7 @@ import Foundation
 
 class AppConfig {
     
-    let API_ENDPOINT = "http://172.19.11.168:8080/clinic/web/v1"
+    // http://172.19.11.20:8080
+    let API_ENDPOINT = "http://172.19.11.170:8080/clinic/web/v1"
     
 }
