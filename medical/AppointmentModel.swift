@@ -94,8 +94,8 @@ class Appointment {
         }
     }
     
-    fileprivate class func listRequestByPatient(_ patientId: String, completionHandler: @escaping (Result<AppointmentWrapper>) -> Void) {
-        let _ = Alamofire.request(AppointmentRoute.listByPatient(patientId: patientId))
+    fileprivate class func listRequestByPatient(patientId: String, status: String, completionHandler: @escaping (Result<AppointmentWrapper>) -> Void) {
+        let _ = Alamofire.request(AppointmentRoute.listByPatient(patientId: patientId, status: status))
             .responseJSON { response in
                 if let error = response.result.error {
                     completionHandler(.failure(error))
@@ -108,9 +108,9 @@ class Appointment {
     }
     
     
-    fileprivate class func listRequestByDoctor(_ doctorId: String, completionHandler: @escaping (Result<AppointmentWrapper>) -> Void) {
+    fileprivate class func listRequestByDoctor(doctorId: String, status: String, completionHandler: @escaping (Result<AppointmentWrapper>) -> Void) {
         
-        let _ = Alamofire.request(AppointmentRoute.listByDoctor(doctorId: doctorId))
+        let _ = Alamofire.request(AppointmentRoute.listByDoctor(doctorId: doctorId, status: status))
             .responseJSON { response in
                 if let error = response.result.error {
                     completionHandler(.failure(error))
@@ -147,12 +147,12 @@ class Appointment {
         createRequest(patientId,doctorId, date, completionHandler: completionHandler)
     }
     
-    class func list(patientId: String, _ completionHandler: @escaping (Result<AppointmentWrapper>) -> Void) {
-        listRequestByPatient(patientId, completionHandler: completionHandler)
+    class func listByPatient(patientId: String, status: String, _ completionHandler: @escaping (Result<AppointmentWrapper>) -> Void) {
+        listRequestByPatient(patientId: patientId, status: status, completionHandler: completionHandler)
     }
     
-    class func list(doctorId: String, _ completionHandler: @escaping (Result<AppointmentWrapper>) -> Void) {
-        listRequestByDoctor(doctorId, completionHandler: completionHandler)
+    class func listByDoctor(doctorId: String, status: String, _ completionHandler: @escaping (Result<AppointmentWrapper>) -> Void) {
+        listRequestByDoctor(doctorId: doctorId, status: status, completionHandler: completionHandler)
     }
     
     class func updateStatus(id: String, status: String, _ completionHandler: @escaping (Result<AppointmentWrapper>) -> Void) {

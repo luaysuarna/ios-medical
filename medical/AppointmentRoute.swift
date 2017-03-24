@@ -12,8 +12,8 @@ import Alamofire
 enum AppointmentRoute: URLRequestConvertible {
     
     case create(patientId: String, doctorId: String, date: String)
-    case listByPatient(patientId: String)
-    case listByDoctor(doctorId: String)
+    case listByPatient(patientId: String, status: String)
+    case listByDoctor(doctorId: String, status: String)
     case updateStatus(id: String, status: String)
     
     static let baseURLString = appConfig.API_ENDPOINT
@@ -34,13 +34,22 @@ enum AppointmentRoute: URLRequestConvertible {
     var path: String {
         switch self {
         case .create:
-            return "/appointment/create"
-        case .listByPatient:
-            return "/appointment/find-by-patient"
-        case .listByDoctor:
-            return "/appointment/find-by-doctor"
+            return "/v1/appointment/create"
+        case .listByPatient(let patientId, let status):
+            if status == "" {
+                return "/v1/appointment/find-by-patient"
+            } else {
+                return "/v2/appointment/find-by-patient"
+            }
+        case .listByDoctor(let doctorId, let status):
+            
+            if status == "" {
+                return "/v1/appointment/find-by-doctor"
+            } else {
+                return "/v2/appointment/find-by-doctor"
+            }
         case .updateStatus:
-            return "/appointment/status"
+            return "/v1/appointment/status"
         }
     }
     
@@ -58,14 +67,27 @@ enum AppointmentRoute: URLRequestConvertible {
             let parameters: Parameters = ["patient_id": patientId, "doctor_id": doctorId, "date": date, "status": "Pending"]
             urlRequest = try URLEncoding.default.encode(urlRequest, with: parameters)
             
-        case .listByPatient(let patientId):
+        case .listByPatient(let patientId, let status):
             
-            let parameters: Parameters = ["id": patientId]
+            var parameters: Parameters!
+            
+            if status == "" {
+                parameters = ["id": patientId]
+            } else {
+                parameters = ["id": patientId, "status": status]
+            }
+            
             urlRequest = try URLEncoding.default.encode(urlRequest, with: parameters)
             
-        case .listByDoctor(let doctorId):
+        case .listByDoctor(let doctorId, let status):
+            var parameters: Parameters!
             
-            let parameters: Parameters = ["id": doctorId]
+            if status == "" {
+                parameters = ["id": doctorId]
+            } else {
+                parameters = ["id": doctorId, "status": status]
+            }
+            
             urlRequest = try URLEncoding.default.encode(urlRequest, with: parameters)
             
         case .updateStatus(let id, let status):

@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import PathMenu
 
-class AppointmentController: BaseViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, UISearchDisplayDelegate {
+class AppointmentController: BaseViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, UISearchDisplayDelegate, PathMenuDelegate {
     
     @IBOutlet weak var tableAppointment: UITableView!
     @IBOutlet var btnNew: UIBarButtonItem!
@@ -39,8 +40,9 @@ class AppointmentController: BaseViewController, UITableViewDelegate, UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        loadPathMenu()
         addSlideMenuButton()
-        loadAppointments()
+        loadAppointments(status: "")
         loadVisualEffect()
         self.navigationItem.rightBarButtonItem = nil
         visualEffectView.isHidden = true
@@ -110,22 +112,18 @@ class AppointmentController: BaseViewController, UITableViewDelegate, UITableVie
             cell.dateAppointment.text = ""
         }
         
-        if currentUser.role == "Doctor" {
-            if appointment.status == "Approved" || appointment.status == "Completed" {
-                cell.imageStatus.image = UIImage(named: "check")
-            } else if appointment.status == "Cancelled" {
-                cell.imageStatus.image = UIImage(named: "time")
-            } else if appointment.status == "Rejected" {
-                cell.imageStatus.image = UIImage(named: "cancel")
-            } else {
-                cell.imageStatus.isHidden = true
-            }
-            
-            if appointment.status == "Completed" {
-                cell.backgroundColor = UIColor(red: 91.0/255.0, green: 188.0/255.0, blue: 46.0/255.0, alpha: 0.30)
-            } else if appointment.status == "Cancelled" {
-                cell.backgroundColor = UIColor(red: 255.0/255.0, green: 108.0/255.0, blue: 94.0/255.0, alpha: 0.30)
-            }
+        if appointment.status == "Approved" {
+            cell.imageStatus.image = UIImage(named: "state-approve")
+        } else if appointment.status == "Cancelled" {
+            cell.imageStatus.image = UIImage(named: "state-cancel")
+        } else if appointment.status == "Rejected" {
+            cell.imageStatus.image = UIImage(named: "state-reject")
+        } else if appointment.status == "Pending" {
+            cell.imageStatus.image = UIImage(named: "state-pending")
+        } else if appointment.status == "Completed" {
+            cell.imageStatus.image = UIImage(named: "state-complete")
+        } else {
+            cell.imageStatus.isHidden = true
         }
         
         return cell
@@ -151,19 +149,18 @@ class AppointmentController: BaseViewController, UITableViewDelegate, UITableVie
             if selectedAppointment.status == "Completed" {
                 labelCancel.isHidden = false
                 labelCancel.text = "COMPLETED"
-            } else if selectedAppointment.status == "Approved" && ((selectedAppointment.date?.compare(Date())) != nil) {
+            } else if selectedAppointment.status == "Approved" {
                 btnComplete.isHidden = false
-            }
-            else if selectedAppointment.status == "Approved" || selectedAppointment.status == "Rejected" && !((selectedAppointment.date?.compare(Date())) != nil) {
-                btnCancel.isHidden = false
-            }
-            else if selectedAppointment.status == "Cancelled" {
-                labelCancel.isHidden = false
-            }
-            else {
+            } else if selectedAppointment.status == "Pending" {
                 btnApprove.isHidden = false
                 btnReject.isHidden = false
+            } else if selectedAppointment.status == "Cancelled" {
+                labelCancel.isHidden = false
+            } else if selectedAppointment.status == "Rejected" {
+                labelCancel.isHidden = false
+                labelCancel.text = "REJECTED"
             }
+            
         } else if currentUser.role == "Patient" {
             selectedName.text = selectedAppointment.doctor?.person?.name
             selectedDate.text = Utils.dateToString(selectedAppointment.date!)
@@ -180,33 +177,32 @@ class AppointmentController: BaseViewController, UITableViewDelegate, UITableVie
     func addAppointmentsFromWrapper(_ wrapper: AppointmentWrapper?)
     {
         self.appointmentWrapper = wrapper
-        if self.appointments == nil {
+        if self.appointmentWrapper?.appointments != nil {
             self.appointments = (self.appointmentWrapper?.appointments)!
-        } else if self.appointmentWrapper != nil && self.appointmentWrapper!.appointments != nil {
-            self.appointments = self.appointments + self.appointmentWrapper!.appointments!
         }
+        
+        self.tableAppointment.reloadData()
     }
     
-    func loadAppointments() {
+    func loadAppointments(status: String) {
         if currentUser.role == "Doctor" {
-            Appointment.list(doctorId: String(currentUser.id), {
+            Appointment.listByDoctor(doctorId: String(currentUser.id), status: status, {
                 result in
                 if let error = result.error {
                     self.alert.show("Error", alertDescription: "Could not load appointments")
                 }
                 let appointmentWrapper = result.value
                 self.addAppointmentsFromWrapper(appointmentWrapper)
-                self.tableAppointment.reloadData()
             })
         } else if currentUser.role == "Patient" {
-            Appointment.list(patientId: String(currentUser.id), {
+            Appointment.listByPatient(patientId: String(currentUser.id), status: status, {
                 result in
                 if let error = result.error {
                     self.alert.show("Error", alertDescription: "Could not load appointments")
                 }
+                
                 let appointmentWrapper = result.value
                 self.addAppointmentsFromWrapper(appointmentWrapper)
-                self.tableAppointment.reloadData()
             })
         }
     }
@@ -283,6 +279,72 @@ class AppointmentController: BaseViewController, UITableViewDelegate, UITableVie
                     self.alert.show("Success!", alertDescription: "Appointment \(status)")
                 }
         })
+    }
+    
+    // Mark - Load Path Menu
+    
+    func didSelect(on menu: PathMenu, index: Int) {
+        let status = ["Completed", "Approved", "Rejected", "Canceled", "Pending"]
+        
+        loadAppointments(status: status[index])
+    }
+    
+    func willStartAnimationOpen(on menu: PathMenu) {
+        print("Menu will open!")
+    }
+    
+    func willStartAnimationClose(on menu: PathMenu) {
+        print("Menu will close!")
+    }
+    
+    func didFinishAnimationOpen(on menu: PathMenu) {
+        print("Menu was open!")
+    }
+    
+    func didFinishAnimationClose(on menu: PathMenu) {
+        print("Menu was closed!")
+    }
+    
+    func loadPathMenu() {
+        let menuItemImage = UIImage(named: "bg-menuitem")!
+        let menuItemHighlitedImage = UIImage(named: "bg-menuitem-highlighted")!
+        
+        let icoComplete = UIImage(named: "icon-complete")!
+        let icoCancel = UIImage(named: "icon-cancel")!
+        let icoReject = UIImage(named: "icon-reject")!
+        let icoPending = UIImage(named: "icon-pending")!
+        let icoApprove = UIImage(named: "icon-approve")!
+        
+        let menu1 = PathMenuItem(image: menuItemImage, highlightedImage: menuItemHighlitedImage, contentImage: icoComplete)
+        
+        let menu2 = PathMenuItem(image: menuItemImage, highlightedImage: menuItemHighlitedImage, contentImage: icoApprove)
+        
+        let menu3 = PathMenuItem(image: menuItemImage, highlightedImage: menuItemHighlitedImage, contentImage: icoReject)
+        
+        let menu4 = PathMenuItem(image: menuItemImage, highlightedImage: menuItemHighlitedImage, contentImage: icoCancel)
+        
+        let menu5 = PathMenuItem(image: menuItemImage, highlightedImage: menuItemHighlitedImage, contentImage: icoPending)
+        
+        let items = [menu1, menu2, menu3, menu4, menu5]
+        
+        let startItem = PathMenuItem(image: UIImage(named: "bg-addbutton")!,
+                                     highlightedImage: UIImage(named: "bg-addbutton-highlighted"),
+                                     contentImage: UIImage(named: "icon-plus"),
+                                     highlightedContentImage: UIImage(named: "icon-plus-highlighted"))
+        
+        let menu = PathMenu(frame: view.bounds, startItem: startItem, items: items)
+        
+        menu.delegate = self
+        menu.startPoint     = CGPoint(x: UIScreen.main.bounds.width/2, y: view.frame.size.height - 30.0)
+        menu.menuWholeAngle = CGFloat(M_PI) - CGFloat(M_PI/5)
+        menu.rotateAngle    = -CGFloat(M_PI_2) + CGFloat(M_PI/5) * 1/2
+        menu.timeOffset     = 0.0
+        menu.farRadius      = 110.0
+        menu.nearRadius     = 90.0
+        menu.endRadius      = 100.0
+        menu.animationDuration = 0.5
+        
+        view.addSubview(menu)
     }
     
     @IBAction func approved() {

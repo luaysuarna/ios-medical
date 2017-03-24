@@ -57,7 +57,9 @@ class MenuController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         nameUser.text = currentUser.name
         roleUser.text = currentUser.role
-        loadAppointments()
+        if currentUser.role == "Doctor" {
+            loadAppointments()
+        }
         
         imageUser.layer.cornerRadius = imageUser.frame.size.width / 2;
         imageUser.clipsToBounds = true
@@ -133,7 +135,7 @@ class MenuController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         let lblTitle : UILabel = cell.contentView.viewWithTag(101) as! UILabel
         let imgIcon : UIImageView = cell.contentView.viewWithTag(100) as! UIImageView
-        let badgeNotif: UIView = cell.contentView.viewWithTag(104) as! UIView!
+        let badgeNotif: UIView = cell.contentView.viewWithTag(104) as UIView!
         let labelNotif: UILabel = cell.contentView.viewWithTag(103) as! UILabel
         
         lblTitle.font = fontStyle
@@ -169,7 +171,7 @@ class MenuController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func loadAppointments() {
         if currentUser.role == "Doctor" {
-            Appointment.list(doctorId: String(currentUser.id), {
+            Appointment.listByDoctor(doctorId: String(currentUser.id), status: "Pending", {
                 result in
                 if let error = result.error {
                     self.alert.show("Error", alertDescription: "Could not load appointments")
@@ -178,7 +180,7 @@ class MenuController: UIViewController, UITableViewDataSource, UITableViewDelega
                 self.addAppointmentsFromWrapper(appointmentWrapper)
             })
         } else if currentUser.role == "Patient" {
-            Appointment.list(patientId: String(currentUser.id), {
+            Appointment.listByPatient(patientId: String(currentUser.id), status: "Pending", {
                 result in
                 if let error = result.error {
                     self.alert.show("Error", alertDescription: "Could not load appointments")

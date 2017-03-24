@@ -24,7 +24,7 @@ enum DoctorRoute: URLRequestConvertible {
     var path: String {
         switch self {
         case .index:
-            return "/doctor"
+            return "/v1/doctor"
         }
     }
     

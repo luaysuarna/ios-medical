@@ -29,6 +29,8 @@
 		09A3F0891E76375100C82EAC /* AppointmentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A3F0881E76375100C82EAC /* AppointmentCell.swift */; };
 		09A3F08B1E763A1A00C82EAC /* PatientModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A3F08A1E763A1A00C82EAC /* PatientModel.swift */; };
 		09A3F08D1E7674BD00C82EAC /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A3F08C1E7674BD00C82EAC /* Utils.swift */; };
+		09AAB0FD1E839BE7001B9F87 /* MedicineRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09AAB0FC1E839BE7001B9F87 /* MedicineRoute.swift */; };
+		09AAB0FF1E839E34001B9F87 /* MedicineModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09AAB0FE1E839E34001B9F87 /* MedicineModel.swift */; };
 		09C71A211E71251F00173E87 /* DoctorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C71A201E71251F00173E87 /* DoctorModel.swift */; };
 		09C71A231E712F1E00173E87 /* PersonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C71A221E712F1D00173E87 /* PersonModel.swift */; };
 		09C71A251E7130A900173E87 /* DoctorRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C71A241E7130A900173E87 /* DoctorRoute.swift */; };
@@ -61,6 +63,8 @@
 		09A3F0881E76375100C82EAC /* AppointmentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppointmentCell.swift; sourceTree = "<group>"; };
 		09A3F08A1E763A1A00C82EAC /* PatientModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatientModel.swift; sourceTree = "<group>"; };
 		09A3F08C1E7674BD00C82EAC /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		09AAB0FC1E839BE7001B9F87 /* MedicineRoute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MedicineRoute.swift; sourceTree = "<group>"; };
+		09AAB0FE1E839E34001B9F87 /* MedicineModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MedicineModel.swift; sourceTree = "<group>"; };
 		09C71A201E71251F00173E87 /* DoctorModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoctorModel.swift; sourceTree = "<group>"; };
 		09C71A221E712F1D00173E87 /* PersonModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonModel.swift; sourceTree = "<group>"; };
 		09C71A241E7130A900173E87 /* DoctorRoute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoctorRoute.swift; sourceTree = "<group>"; };
@@ -154,6 +158,7 @@
 				0985FB5C1E67CF6100E45BF9 /* SessionRoute.swift */,
 				09C71A241E7130A900173E87 /* DoctorRoute.swift */,
 				093AE1A61E725636009A4D32 /* AppointmentRoute.swift */,
+				09AAB0FC1E839BE7001B9F87 /* MedicineRoute.swift */,
 			);
 			name = routes;
 			sourceTree = "<group>";
@@ -167,6 +172,7 @@
 				09C71A261E7143C100173E87 /* UserModel.swift */,
 				093AE1A21E7241DF009A4D32 /* AppointmentModel.swift */,
 				09A3F08A1E763A1A00C82EAC /* PatientModel.swift */,
+				09AAB0FE1E839E34001B9F87 /* MedicineModel.swift */,
 			);
 			name = models;
 			sourceTree = "<group>";
@@ -341,6 +347,7 @@
 				0971FD671E6D09C800816D95 /* WelcomeController.swift in Sources */,
 				092AE0EA1E6E4CB500B8DF13 /* AppointmentController.swift in Sources */,
 				092913771E6FDD84001D2E53 /* NewAppointmentController.swift in Sources */,
+				09AAB0FD1E839BE7001B9F87 /* MedicineRoute.swift in Sources */,
 				09A3F08B1E763A1A00C82EAC /* PatientModel.swift in Sources */,
 				093AE1A51E724223009A4D32 /* BackendError.swift in Sources */,
 				09A3F0891E76375100C82EAC /* AppointmentCell.swift in Sources */,
@@ -351,6 +358,7 @@
 				096D5D881E667B8100398504 /* SessionsController.swift in Sources */,
 				096D5D861E667B8100398504 /* AppDelegate.swift in Sources */,
 				0985FB641E6801FC00E45BF9 /* SessionModel.swift in Sources */,
+				09AAB0FF1E839E34001B9F87 /* MedicineModel.swift in Sources */,
 				093AE1A31E7241DF009A4D32 /* AppointmentModel.swift in Sources */,
 				0985FB611E67EC7E00E45BF9 /* AppConfig.swift in Sources */,
 			);
