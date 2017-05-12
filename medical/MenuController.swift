@@ -95,6 +95,9 @@ class MenuController: UIViewController, UITableViewDataSource, UITableViewDelega
             arrayMenuOptions.append(["title":"Appointment", "icon":"ico1"])
             arrayMenuOptions.append(["title":"Logout", "icon":"ico1"])
         } else {
+            arrayMenuOptions.append(["title":"Home", "icon":"ico1"])
+            arrayMenuOptions.append(["title":"Purchase", "icon":"ico1"])
+            arrayMenuOptions.append(["title":"Cashier", "icon":"ico1"])
             arrayMenuOptions.append(["title":"Logout", "icon":"ico1"])
         }
         

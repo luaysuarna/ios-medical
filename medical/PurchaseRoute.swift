@@ -1,31 +1,36 @@
 //
-//  MedicineRoute.swift
+//  PurchaseRoute.swift
 //  medical
 //
-//  Created by Luay Suarna on 3/23/17.
+//  Created by Luay Suarna on 3/24/17.
 //  Copyright © 2017 Luay Suarna. All rights reserved.
 //
 
 import Foundation
 import Alamofire
 
-enum MedicineRoute: URLRequestConvertible {
+enum PurchaseRoute: URLRequestConvertible {
     
     static let baseURLString = appConfig.API_ENDPOINT
     
-    case list(limit: Int, page: Int)
+    case list
+    case create(date: String, totalPrice: String)
     
     var method: HTTPMethod {
         switch self {
         case .list:
             return .get
+        case .create:
+            return .post
         }
     }
     
     var path: String {
         switch self {
         case .list:
-            return "/v1/medicine/list"
+            return "/v1/purchase-header"
+        case .create:
+            return "/v1/purchase-header/create"
         }
     }
     
@@ -36,8 +41,10 @@ enum MedicineRoute: URLRequestConvertible {
         urlRequest.httpMethod = method.rawValue
         
         switch self {
-        case .list(let limit, let page):
-            let parameters: Parameters = ["limit": limit, "page": page]
+        case .list:
+            urlRequest = try URLEncoding.default.encode(urlRequest, with: nil)
+        case .create(let date, let totalPrice):
+            let parameters: Parameters = ["date": date, "total_price": totalPrice, "paid": totalPrice]
             urlRequest = try URLEncoding.default.encode(urlRequest, with: parameters)
         default:
             break
@@ -46,3 +53,4 @@ enum MedicineRoute: URLRequestConvertible {
         return urlRequest
     }
 }
+

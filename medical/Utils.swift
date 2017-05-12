@@ -13,7 +13,7 @@ class Utils {
     class public func dateToString(_ date: Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
-        let dateString = dateFormatter.string(from:date)
+        let dateString = dateFormatter.string(from: date)
         
         return dateString
     }
@@ -28,5 +28,23 @@ class Utils {
             
             return date
         }
+    }
+    
+    class public func currentDateInString() -> String {
+        
+        let date = self.stringToDate("0000-00-00 00:00:00")
+        
+        return self.dateToString(date)
+    }
+    
+    class public func timeAgo(_ date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        let result = dateFormatter.timeSince(from: date as NSDate, numericDates: true)
+        
+        return result
+    }
+    
+    class public func numberToCurrency(_ double: Double) -> String {
+        return String(format: "$%.02f", locale: Locale.current, arguments: [double])
     }
 }

@@ -39,14 +39,14 @@ enum AppointmentRoute: URLRequestConvertible {
             if status == "" {
                 return "/v1/appointment/find-by-patient"
             } else {
-                return "/v2/appointment/find-by-patient"
+                return "/v1/appointment/find-by-patient-status"
             }
         case .listByDoctor(let doctorId, let status):
             
             if status == "" {
                 return "/v1/appointment/find-by-doctor"
             } else {
-                return "/v2/appointment/find-by-doctor"
+                return "/v1/appointment/find-by-doctor-status"
             }
         case .updateStatus:
             return "/v1/appointment/status"

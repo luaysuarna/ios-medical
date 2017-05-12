@@ -84,6 +84,24 @@ class BaseViewController: UIViewController, SlideMenuDelegate {
             default:
                 print("default\n", terminator: "")
             }
+        } else if currentUser.role == "Cashier" {
+            switch(index){
+            case 0:
+                self.openViewControllerBasedOnIdentifier("Welcome")
+                break
+            case 1:
+                self.openViewControllerBasedOnIdentifier("Purchase")
+                break
+            case 2:
+                self.openViewControllerBasedOnIdentifier("Cashier")
+                break
+            case 3:
+                SessionModel.setAuthToken("")
+                self.view.window!.rootViewController?.dismiss(animated: true, completion: nil)
+                break
+            default:
+                print("default\n", terminator: "")
+            }
         }
     }
     

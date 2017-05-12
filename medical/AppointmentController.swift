@@ -284,7 +284,7 @@ class AppointmentController: BaseViewController, UITableViewDelegate, UITableVie
     // Mark - Load Path Menu
     
     func didSelect(on menu: PathMenu, index: Int) {
-        let status = ["Completed", "Approved", "Rejected", "Canceled", "Pending"]
+        let status = ["Completed", "Approved", "Rejected", "Cancelled", "Pending"]
         
         loadAppointments(status: status[index])
     }
